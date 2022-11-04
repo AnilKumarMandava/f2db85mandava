@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+    - let image_names = ["event.jpg","eventid.jpg","eventtype.jpg","evperson.jpg","evupcoming.jpg"]
+  - for(let i=0;i<3;i++){
+      - let item = Math.floor(Math.random()*5);
+      - let value = image_names[item];
+      img(src=`/images/${value}` alt=`${value}` style='height:300px; width:300px') 
+  - }
