@@ -3,7 +3,7 @@ var Event = require('../models/event');
 exports.event_list = async function (req, res) {
     try {
         theEvents = await Event.find();
-        res.send(theEvent);
+        res.send(theEvents);
     }
     catch (err) {
         res.status(500);
@@ -22,9 +22,9 @@ exports.event_create_post = async function (req, res) {
     // Even though bodies can be in many different formats, we will be picky
     // and require that it be a json object
     // {"event_type":"ghost", "cost":12, "size":"large"}
-    document.name = req.body.name;
-    document.duration = req.body.duration;
-    document.director = req.body.director;
+    document.eventname = req.body.eventname;
+    document.eventid = req.body.eventid;
+    document.eventtype = req.body.eventtype;
     try {
         let result = await document.save();
         res.send(result);
