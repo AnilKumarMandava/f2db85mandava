@@ -1,17 +1,15 @@
-extends layout
+extends layout 
 
-block content
-  h1= title
-  p Welcome to #{title}
-   - var results = event;
-  div(class="container-fluid")
-    each value,index in results 
-      div(class="row" ,onclick=`buy(${index})`)
-        div(class="col-sm-2") #{value.event_Name}
-        div(class="col-sm-2") #{value.event_id}
-        div(class="col-sm-2") #{value.event_type}
+block content 
+    h1= title
+    - var results = [{"eventname": "Oscar", "eventid": 1001, "eventtype": "Awards"}, {"eventname": "MTV", "eventid": 1002, "eventtype": "Rampwalk"}, {"eventname": "HBO", "eventid": 1003, "eventtype": "Movie launch"}]
+    div.container-fluid
+        div.row
+            each item, index in results
+                div.col-sm-2(onclick=`buy(${index})`) #{item["eventname"]}, #{item["eventid"]}, #{item["eventtype"]}
+        
 
-  script. 
-        function buy(cost){
-          alert('You purchased value ' + cost)
+    script. 
+        function buy(index) {
+            alert("You Event  item " + index);
         }
