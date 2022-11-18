@@ -1,0 +1,52 @@
+extends layout 
+ 
+block content 
+  h1= title 
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let Eventid = toShow._id 
+    - let Eventname = toShow.Eventname
+    - let Event_id = toShow.Event_id
+    - let Eventtype = toShow.Eventtype
+    - let actionid = "/resource/Events/" + Event_id 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row
+       div(class='EventAttr mr-3') Event ID is:
+       div #{Eventid}
+      div.row
+       div(class='EventAttr mr-3') Event Name is:
+       div #{Eventname}
+      div.row
+       div(class='EventAttr mr-3') Event ID is:
+       div #{Event_id}
+      div.row
+       div(class='EventAttr mr-3') Event Type is:
+       div #{Eventtype}
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the Event collection 
+      window.location.href='/Event' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'     
+      }).then((resp) => { 
+        return resp.text(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/Event' 
+        // TODO handle body 
+      }).catch((error) => { 
+        console.log(error);
+        alert("Delete failed " + error ) 
+      }); 
+    } 

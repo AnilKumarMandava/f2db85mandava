@@ -6,3 +6,10 @@ body {
 a {
   color: #00B7FF;
 }
+.EventAttr {
+  background-color:crimson ;
+  width: 120px;
+  font-size: medium;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  }

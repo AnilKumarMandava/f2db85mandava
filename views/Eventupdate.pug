@@ -1,0 +1,42 @@
+extends layout
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to delete
+  else
+  - let Eventid = toShow._id
+  - let Event_brand = toShow.Event_brand
+  - let Event_cost = toShow.Event_cost
+  - let Event_color = toShow.Event_color
+  - let actionid = "/resource/Events/" + Eventid
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{Eventid} 
+  form(id='EventForm', action=actionid, method="PUT")
+   div.form-group
+    label.EventAttr(for='Eventname') Event Name 
+    input#Eventname(type='text', name='Eventname')
+   div.form-group
+    label.EventAttr(for='Event_id') Event ID
+    input#Event_id(type='number', name='Event_id')
+   div.form-group
+    label.EventAttr(for='Eventtype') Event Type
+    input#Eventtype(type='text', name='Eventtype')
+   input(type="submit")
+  script.
+    document.forms['EventForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+       method: 'PUT',
+       body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+       return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+       alert("Save succeded")
+       // TODO handle body
+      }).catch((error) => {
+       // TODO handle error
+       alert("Save failed " + error )
+      });
+     });

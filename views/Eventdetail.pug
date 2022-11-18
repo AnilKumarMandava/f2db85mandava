@@ -1,0 +1,23 @@
+extends layout
+block content
+ h1= title
+ if (toShow == null)
+   // h2 No instance to Show (or) The instance selected is not in the collection.
+ else
+    - let eventid = toShow._id
+    - let Eventname = toShow.Eventname
+    - let Event_id = toShow.Event_id
+    - let Eventtype = toShow.Eventtype
+    div
+        div.row
+            div(class='EventAttr mr-3') Event id is:
+            div #{eventid}
+        div.row
+            div(class='EventAttr mr-3') Event  Name  is:
+            div #{Eventname}
+        div.row
+            div(class='EventAttr mr-3') Event  Id is:
+            div #{Event_id}
+        div.row
+            div(class='EventAttr mr-3') Event Type is:
+            div #{Eventtype}

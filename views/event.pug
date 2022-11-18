@@ -2,11 +2,11 @@ extends layout
 
 block content 
     h1= title
-    - var results = [{"eventname": "Oscar", "eventid": 1001, "eventtype": "Awards"}, {"eventname": "MTV", "eventid": 1002, "eventtype": "Rampwalk"}, {"eventname": "HBO", "eventid": 1003, "eventtype": "Movie launch"}]
+   
     div.container-fluid
         div.row
             each item, index in results
-                div.col-sm-2(onclick=`buy(${index})`) #{item["eventname"]}, #{item["eventid"]}, #{item["eventtype"]}
+                div.col-sm-2(onclick=`buy(${index})`) #{item["Eventname"]}, #{item["Event_id"]}, #{item["Eventtype"]}
         
 
     script. 
