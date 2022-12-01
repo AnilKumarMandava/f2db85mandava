@@ -4,13 +4,13 @@ block content
         form(id='EventForm', action="/resource/Event", method="POST")
             div.form-group
                 label.EventAttr(for='Eventname') Event Name
-                input#Eventname(type='text', name='Eventname',minlength='3', maxlength='6')
+                input#Eventname(type='text', name='Eventname')
             div.form-group
                 label.EventAttr(for='Event_id') Event ID
-                input#Event_id(type='number', name='Event_id',min='1', max='25')
+                input#Event_id(type='number', name='Event_id')
             div.form-group
                 label.EventAttr(for='Eventtype') Event Type
-                input#Eventtype(type='text', name='Eventtype',minlenth='3', maxlenth='6')
+                input#Eventtype(type='text', name='Eventtype')
 
             input(type="submit")
     script.
